@@ -151,4 +151,12 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    #region UI Manager Methods
+
+    public void UpdatePlayersCountInUIManager(int playersCount)
+    {
+        UIManager.Instance.UpdatePlayersCount(playersCount);
+    }
+    #endregion
 }

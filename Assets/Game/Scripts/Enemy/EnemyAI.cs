@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private Enemy m_enemy;
-    [SerializeField] private GameObject target;
+    private GameObject target;
     private Dictionary<float, GameObject> m_distanceAndTarget = new Dictionary<float, GameObject>();
     private void Start()
     {

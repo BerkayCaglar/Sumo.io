@@ -5,11 +5,19 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
     private Animator inGameCanvasAnimator;
-    [SerializeField] private GameObject pauseMenu, joystickCanvas, pauseButton, countDownParent, gameOverMenu;
-    [SerializeField] private TMP_Text countDownText, placementText;
+    [SerializeField] private GameObject pauseMenu, joystickCanvas, pauseButton, countDownParent, gameOverMenu, playersCountMenu;
+    [SerializeField] private TMP_Text countDownText, placementText, playersCountText;
     [SerializeField] private Sprite[] placementSprites;
     private int countDown = 3;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     private void Start()
     {
         SetTimeScaleToOne();
@@ -149,4 +157,12 @@ public class UIManager : MonoBehaviour
     #endregion
 
 
+    #region Players Count Methods
+
+    public void UpdatePlayersCount(int count)
+    {
+        playersCountText.text = count.ToString();
+    }
+
+    #endregion
 }
