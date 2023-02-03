@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
     private Animator inGameCanvasAnimator;
     [SerializeField] private GameObject pauseMenu, joystickCanvas, pauseButton, countDownParent, gameOverMenu, playersCountMenu;
-    [SerializeField] private TMP_Text countDownText, placementText, playersCountText;
+    [SerializeField] private TMP_Text countDownText, placementText, playersCountText, remainingTimeText, gameOverTitleText;
+    [SerializeField] private Image placementSprite;
     [SerializeField] private Sprite[] placementSprites;
     private int countDown = 3;
     private void Awake()
@@ -72,8 +74,16 @@ public class UIManager : MonoBehaviour
 
     #region Prepare Restart Methods
 
-    public void PrepareRestart()
+    /// <summary>
+    /// Prepare the restart of the game.
+    /// </summary>
+    public void PrepareRestart(string gameOverTitle = null)
     {
+        // If the remaining time has elapsed, the title is changed.
+        if (gameOverTitle != null)
+        {
+            gameOverTitleText.text = gameOverTitle;
+        }
         // Set the game state to game over.
         GameManager.Instance.GameOver();
 
@@ -88,9 +98,34 @@ public class UIManager : MonoBehaviour
         countDownParent.SetActive(false);
 
         // Set the placement text and image.
-        //placementText.text = GameManager.Instance.GetPlacementText();
-        //placementText.GetComponent<TMP_Text>().sprite = placementSprites[GameManager.Instance.GetPlacementIndex()];
+        placementText.text = playersCountText.text;
+
+        SetPlacementAwardImage();
     }
+
+    /// <summary>
+    ///  Set the placement award image.
+    /// </summary>
+    private void SetPlacementAwardImage()
+    {
+        // Get the placement of the player.
+        int placement = int.Parse(playersCountText.text);
+
+        // Set the placement award image.
+        if (placement == 1)
+        {
+            placementSprite.sprite = placementSprites[0];
+        }
+        else if (placement <= 3)
+        {
+            placementSprite.sprite = placementSprites[1];
+        }
+        else
+        {
+            placementSprite.sprite = placementSprites[2];
+        }
+    }
+
 
     #endregion
 
@@ -159,9 +194,50 @@ public class UIManager : MonoBehaviour
 
     #region Players Count Methods
 
-    public void UpdatePlayersCount(int count)
+    /// <summary>
+    /// Decrease the players count by 1.
+    /// </summary>
+    public void DecreasePlayersCount()
     {
+        // Get the current count and -1 from it.
+        int count = int.Parse(playersCountText.text);
+        count--;
+
+        // Play the players count animation.
+        inGameCanvasAnimator.SetTrigger("Players Count");
+
+        // Set the new count to the text.
         playersCountText.text = count.ToString();
+    }
+
+    /// <summary>
+    /// Increase the players count by 1.
+    /// </summary>
+    public void IncreasePlayersCount()
+    {
+        // Get the current count and +1 from it.
+        int count = int.Parse(playersCountText.text);
+        count++;
+
+        // Set the new count to the text.
+        playersCountText.text = count.ToString();
+    }
+
+    #endregion
+
+    #region Remaining Time Methods
+
+    /// <summary>
+    /// Update the remaining time text.
+    /// </summary>
+    /// <param name="remainingTime"></param>
+    public void UpdateRemainingTime(int remainingTime)
+    {
+        // Play the remaining time animation.
+        inGameCanvasAnimator.SetTrigger("Remaining Time");
+        Debug.Log("Remaining Time: " + remainingTime);
+        // Set the remaining time to the text.
+        remainingTimeText.text = remainingTime.ToString();
     }
 
     #endregion

@@ -27,6 +27,7 @@ public class SpawnManager : MonoBehaviour
     {
         foreach (GameObject spawnPoint in m_spawnPoints)
         {
+            GameManager.Instance.IncreasePlayersCountInUIManager();
             // Get a random object to spawn
             GameObject spawnObject;
             spawnObject = m_spawnObjects[Random.Range(0, m_spawnObjects.Count)];
@@ -53,7 +54,7 @@ public class SpawnManager : MonoBehaviour
                     continue;
                 };
                 // Spawn the player at the random spawn point
-                Instantiate(spawnObject, spawnPoint.transform.position, Quaternion.identity);
+                GameObject spawnedPlayerObject = Instantiate(spawnObject, spawnPoint.transform.position, Quaternion.identity);
 
                 // Set the player randomly selected to true
                 m_playerRandomlySelected = true;
@@ -61,6 +62,7 @@ public class SpawnManager : MonoBehaviour
                 // Remove the player from the spawn objects list
                 m_spawnObjects.Remove(spawnObject);
 
+                GameManager.Instance.Player = spawnedPlayerObject;
                 // Wait for 0.2 seconds
                 yield return new WaitForSeconds(0.2f);
 

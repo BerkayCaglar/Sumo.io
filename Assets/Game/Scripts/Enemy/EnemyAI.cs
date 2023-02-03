@@ -116,12 +116,4 @@ public class EnemyAI : MonoBehaviour
     {
         m_enemy.NavMeshAgent.enabled = true;
     }
-    /// <summary>
-    /// Click on the enemy in the scene view and it will draw a red sphere around it. The radius of the sphere is the detection radius.
-    /// </summary>
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 40f);
-    }
 }

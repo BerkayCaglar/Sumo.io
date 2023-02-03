@@ -32,6 +32,10 @@ public class EnemyCollisionController : MonoBehaviour
         // If the collision is with the death zone, destroy the enemy object
         else if (other.gameObject.CompareTag("Death Zone"))
         {
+            // Decrease the players count in UI Manager
+            GameManager.Instance.DecreasePlayersCountInUIManager();
+
+            // Destroy the enemy object
             Destroy(gameObject);
         }
     }

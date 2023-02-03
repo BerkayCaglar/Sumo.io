@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnvironmentRotater : MonoBehaviour
 {
-    private float m_rotationSpeed = 20f;
+    private float m_rotationSpeed = 10f;
     private void Update()
     {
         if (GameManager.Instance.CurrentGameState != GameManager.GameState.Playing) return;
