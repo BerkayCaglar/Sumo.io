@@ -1,13 +1,11 @@
 # Sumo.io (Warrior.io)
  
-No Surrender InternShip programı için Berkay Çağlar tarafından tasarlanmıştır!
+### No Surrender InternShip programı için Berkay Çağlar tarafından tasarlanmıştır!
 
-Aktif özellikler;
+## Aktif özellikler;
 
 Aktif Yapay zeka sistemi (NavMesh bazlı),
-
 Spawn Sistemi,
-
 Vuruş ve vuruşa bağlı tepki sistemi,
 
 Hareket ve kontrol sistemi, 
