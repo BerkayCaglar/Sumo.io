@@ -2,7 +2,9 @@
  
 ### Bu oyun No Surrender InternShip programı için Berkay Çağlar tarafından tasarlanmıştır!
 
-## Aktif özellikler;
+## Oyun içi video : https://www.youtube.com/watch?v=oNjqLZTTNjw
+
+# Aktif özellikler;
 
 Aktif Yapay zeka sistemi (NavMesh bazlı),
 Spawn Sistemi,
@@ -33,11 +35,11 @@ Ve daha fazlası!
 ![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Another_Battle.png)
 ![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Bigger_Battle.png)
 ![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Critical_Hit.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Game_Pause.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Game_Start.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Game_Start_Countdown.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Going_To_Boosts.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Hit_Effect.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Time's_Up.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/You_Are_Eliminated.png)
-![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/You_Are_The_Winner.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Game_Pause.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Game_Start.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Game_Start_Countdown.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Going_To_Boosts.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Hit_Effect.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Time's_Up.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/You_Are_Eliminated.png)
+![](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/You_Are_The_Winner.png)
