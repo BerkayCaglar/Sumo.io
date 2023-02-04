@@ -30,4 +30,4 @@ Ve daha fazlası!
 
 # Oyun İçi Görseller;
 
-![My Image]("Sumo.io Screenshots"/Main_Menu.jpg)
+![My Image](Sumo.io Screenshots/Main_Menu.jpg)
