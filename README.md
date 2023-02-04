@@ -30,4 +30,4 @@ Ve daha fazlası!
 
 # Oyun İçi Görseller;
 
-![My Remote Image]([https://www.dropbox.com/s/.../my-remote-image.jpg?dl=0](https://github.com/BerkayCaglar/Sumo.io/blob/main/Sumo.io%20Screenshots/Main_Menu.png))
+![Main Menu](https://raw.githubusercontent.com/BerkayCaglar/Sumo.io/main/Sumo.io%20Screenshots/Main_Menu.png)
