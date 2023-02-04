@@ -6,7 +6,7 @@
 
 # Aktif özellikler;
 
-#### Aktif Yapay zeka sistemi (NavMesh bazlı)
+##### Aktif Yapay zeka sistemi (NavMesh bazlı)
 #### Spawn Sistemi
 #### Vuruş ve vuruşa bağlı tepki sistemi
 #### Hareket ve kontrol sistemi
