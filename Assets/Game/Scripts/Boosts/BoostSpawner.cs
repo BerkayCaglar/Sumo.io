@@ -6,7 +6,7 @@ public class BoostSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject boostPrefab;
     [SerializeField] private float spawnDelay = 4f;
-    [SerializeField] private float spawnRadius = 10f;
+    [SerializeField] private float spawnRadius = 20f;
     [SerializeField] private float spawnHeight = 0.5f;
     private float spawnTimer = 0f;
     void Update()
@@ -21,6 +21,7 @@ public class BoostSpawner : MonoBehaviour
             spawnTimer = 0f;
             SpawnBoost();
         }
+
     }
 
     #region Spawn Boost
@@ -31,13 +32,13 @@ public class BoostSpawner : MonoBehaviour
     void SpawnBoost()
     {
         // The boost will spawn at a random position within the spawnRadius
-        Vector3 spawnPos = transform.position + transform.forward * spawnRadius;
-        spawnPos = Random.insideUnitSphere * spawnRadius;
+        Vector3 spawnPos = Random.insideUnitSphere * spawnRadius;
 
         // Make sure the boost spawns on the navmesh
         NavMeshHit hit;
         if (NavMesh.SamplePosition(spawnPos, out hit, spawnRadius, NavMesh.AllAreas))
         {
+            // If the boost spawns on the navmesh, set the spawnPos to the hit position
             spawnPos = hit.position;
         }
 

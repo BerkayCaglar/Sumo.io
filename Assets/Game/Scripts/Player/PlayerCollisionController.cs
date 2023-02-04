@@ -7,6 +7,7 @@ public class PlayerCollisionController : MonoBehaviour
     private Player m_player;
     private void Start()
     {
+        // Get the player component
         m_player = GetComponent<Player>();
     }
 

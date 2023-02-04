@@ -11,6 +11,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        // If the game is not playing, return
         if (GameManager.Instance.CurrentGameState != GameManager.GameState.Playing) return;
 
         MovementAnimation();

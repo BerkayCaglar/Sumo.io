@@ -27,7 +27,9 @@ public class SpawnManager : MonoBehaviour
     {
         foreach (GameObject spawnPoint in m_spawnPoints)
         {
+            // Increase the players count in the UI manager
             GameManager.Instance.IncreasePlayersCountInUIManager();
+
             // Get a random object to spawn
             GameObject spawnObject;
             spawnObject = m_spawnObjects[Random.Range(0, m_spawnObjects.Count)];

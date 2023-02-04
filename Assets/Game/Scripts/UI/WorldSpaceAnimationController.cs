@@ -12,6 +12,7 @@ public class WorldSpaceAnimationController : MonoBehaviour
     }
     private void Update()
     {
+        // The critical hit canvas object is constantly looking at the camera.
         transform.LookAt(Camera.main.transform);
     }
 

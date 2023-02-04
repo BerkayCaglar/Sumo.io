@@ -11,6 +11,7 @@ public class ParticleEffectController : MonoBehaviour
     /// </summary>
     public void PlayExplosionParticle()
     {
+        // Play the particle
         m_explosionParticle.Play();
     }
 }

@@ -14,16 +14,22 @@ public class GameManager : MonoBehaviour
     public GameObject Player { get { return m_player; } set { m_player = value; } }
     private void Awake()
     {
+        // If there is no instance, set this instance as the instance
         if (m_Instance == null)
         {
+            // Set this instance as the instance
             m_Instance = this;
         }
     }
     private void Update()
     {
+        // If the game is playing and the time is not running, start the time
         if (CurrentGameState == GameState.Playing && !m_isTimeRunning)
         {
+            // Start the time
             m_isTimeRunning = true;
+
+            // Start the coroutine
             StartCoroutine(UpdateRemainingTimeInUIManager());
         }
     }
@@ -113,6 +119,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     private Vector3 ReturnPushDirection(GameObject otherGameObject, GameObject thisGameObject)
     {
+        // The direction of the push is calculated by subtracting the position of the other gameobject from the position of the gameobject that is hit.
         return (otherGameObject.transform.position - thisGameObject.transform.position).normalized;
     }
 
@@ -148,14 +155,23 @@ public class GameManager : MonoBehaviour
 
     #region Game State Methods
 
+    /// <summary>
+    ///  Used to pause the game.
+    /// </summary>
     public void PauseGame()
     {
         CurrentGameState = GameState.Paused;
     }
+    /// <summary>
+    /// Used to resume the game.
+    /// </summary>
     public void ResumeGame()
     {
         CurrentGameState = GameState.Playing;
     }
+    /// <summary>
+    /// Used to start the game.
+    /// </summary>
     public void GameOver()
     {
         CurrentGameState = GameState.GameOver;
@@ -180,17 +196,31 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.DecreasePlayersCount();
     }
 
+    /// <summary>
+    /// Used to update the remaining time in the UI Manager.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator UpdateRemainingTimeInUIManager()
     {
+        // The reason why I used a coroutine here is because I wanted to update the remaining time in the UI Manager every second.
         while (true)
         {
+            // Wait for 1 second.
             yield return new WaitForSeconds(1f);
+
+            // If the remaining time is 0, the game is over.
             if (m_remainingTime <= 0)
             {
+                // Prepare the game for restart.
                 UIManager.Instance.PrepareRestart("Time's Up!");
+
+                // Stop the coroutine.
                 yield break;
             }
+            // If the remaining time is not 0, update the remaining time.
             m_remainingTime--;
+
+            // Update the remaining time in the UI Manager.
             UIManager.Instance.UpdateRemainingTime(m_remainingTime);
         }
     }
