@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private Enemy m_enemy;
-    [SerializeField] private GameObject target;
+    private GameObject target;
     private Dictionary<float, GameObject> m_distanceAndTarget = new Dictionary<float, GameObject>();
     private void Start()
     {
@@ -40,8 +40,8 @@ public class EnemyAI : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, m_enemy.DetectionRadius, m_enemy.DetectableLayerMask);
         foreach (Collider collider in colliders)
         {
-            // If the collider is the enemy itself, continue
-            if (collider.gameObject == this.gameObject) continue;
+            // If the collider is the enemy itself or the dictionary already contains the distance, continue
+            if (collider.gameObject == this.gameObject || m_distanceAndTarget.ContainsKey(Vector3.Distance(transform.position, collider.transform.position))) continue;
 
             // Add the target to the dictionary
             m_distanceAndTarget.Add(Vector3.Distance(transform.position, collider.transform.position), collider.gameObject);
@@ -115,13 +115,5 @@ public class EnemyAI : MonoBehaviour
     private void EnableNavMeshAgent()
     {
         m_enemy.NavMeshAgent.enabled = true;
-    }
-    /// <summary>
-    /// Click on the enemy in the scene view and it will draw a red sphere around it. The radius of the sphere is the detection radius.
-    /// </summary>
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 40f);
     }
 }

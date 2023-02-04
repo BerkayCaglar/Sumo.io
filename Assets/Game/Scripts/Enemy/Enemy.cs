@@ -16,7 +16,8 @@ public class Enemy : MonoBehaviour
     private ParticleEffectController m_particleEffectController;
     private WorldSpaceAnimationController m_worldSpaceAnimationController;
     private NavMeshAgent m_navMeshAgent;
-    private float m_stopDistance = 0.1f, m_pushForce = 6f, m_criticalPushMultiplier = 1.5f, m_detectionRadius = 40f;
+    private GameObject m_lastHitToMe;
+    private float m_stopDistance = 0.1f, m_pushForce = 6f, m_criticalPushMultiplier = 1.5f, m_detectionRadius = 50f;
     [SerializeField] private LayerMask m_detectableLayerMask;
 
     #endregion
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
     public float DetectionRadius { get { return m_detectionRadius; } }
     public LayerMask DetectableLayerMask { get { return m_detectableLayerMask; } }
     public float CriticalPushMultiplier { get { return m_criticalPushMultiplier; } }
+    public GameObject LastHitToMe { get { return m_lastHitToMe; } set { m_lastHitToMe = value; } }
     public float PushForce
     {
         get { return m_pushForce; }
@@ -52,5 +54,14 @@ public class Enemy : MonoBehaviour
         m_particleEffectController = GetComponent<ParticleEffectController>();
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         m_worldSpaceAnimationController = GetComponentInChildren<WorldSpaceAnimationController>();
+    }
+
+    /// <summary>
+    /// Click on the enemy in the scene view and it will draw a red sphere around it. The radius of the sphere is the detection radius.
+    /// </summary>
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, m_detectionRadius);
     }
 }

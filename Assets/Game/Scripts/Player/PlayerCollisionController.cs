@@ -31,7 +31,7 @@ public class PlayerCollisionController : MonoBehaviour
         else if (other.gameObject.CompareTag("Death Zone"))
         {
             // Prepare restart the game
-            GameObject.Find("InGame Menu Canvas").GetComponent<UIManager>().PrepareRestart();
+            UIManager.Instance.PrepareRestart();
 
             // Destroy the player object
             Destroy(gameObject);
@@ -85,6 +85,5 @@ public class PlayerCollisionController : MonoBehaviour
         // Destroy the boost object
         Destroy(other.gameObject);
     }
-
     #endregion
 }

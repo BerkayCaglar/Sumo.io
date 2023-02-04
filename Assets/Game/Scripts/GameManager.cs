@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private GameObject m_player;
+    private int m_remainingTime = 80;
+    private bool m_isTimeRunning = false;
     private static GameManager m_Instance;
     public static GameManager Instance { get { return m_Instance; } }
     public enum GameState { Paused, Playing, GameOver }
     public GameState CurrentGameState { get; set; }
+    public GameObject Player { get { return m_player; } set { m_player = value; } }
     private void Awake()
     {
         if (m_Instance == null)
         {
             m_Instance = this;
+        }
+    }
+    private void Update()
+    {
+        if (CurrentGameState == GameState.Playing && !m_isTimeRunning)
+        {
+            m_isTimeRunning = true;
+            StartCoroutine(UpdateRemainingTimeInUIManager());
         }
     }
 
@@ -80,7 +92,6 @@ public class GameManager : MonoBehaviour
                 // If this function called by Enemy
                 if (m_enemy != null)
                 {
-                    Debug.Log("Normal Hit");
                     // Add force to the other gameobject
                     collision.rigidbody.AddForce((pushDirection) * m_enemy.PushForce, ForceMode.Impulse);
                 }
@@ -150,5 +161,38 @@ public class GameManager : MonoBehaviour
         CurrentGameState = GameState.GameOver;
     }
 
+    #endregion
+
+    #region UI Manager Methods
+
+    /// <summary>
+    ///  Used once per player spawn.
+    /// </summary>
+    public void IncreasePlayersCountInUIManager()
+    {
+        UIManager.Instance.IncreasePlayersCount();
+    }
+    /// <summary>
+    /// Used once per player death.
+    /// </summary>
+    public void DecreasePlayersCountInUIManager()
+    {
+        UIManager.Instance.DecreasePlayersCount();
+    }
+
+    private IEnumerator UpdateRemainingTimeInUIManager()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (m_remainingTime <= 0)
+            {
+                UIManager.Instance.PrepareRestart("Time's Up!");
+                yield break;
+            }
+            m_remainingTime--;
+            UIManager.Instance.UpdateRemainingTime(m_remainingTime);
+        }
+    }
     #endregion
 }
