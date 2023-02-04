@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private GameObject m_player;
-    private int m_remainingTime = 60;
+    private int m_remainingTime = 80;
     private bool m_isTimeRunning = false;
     private static GameManager m_Instance;
     public static GameManager Instance { get { return m_Instance; } }
@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour
                 // If this function called by Enemy
                 if (m_enemy != null)
                 {
-                    Debug.Log("Normal Hit");
                     // Add force to the other gameobject
                     collision.rigidbody.AddForce((pushDirection) * m_enemy.PushForce, ForceMode.Impulse);
                 }

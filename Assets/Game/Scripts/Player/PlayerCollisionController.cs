@@ -85,6 +85,5 @@ public class PlayerCollisionController : MonoBehaviour
         // Destroy the boost object
         Destroy(other.gameObject);
     }
-
     #endregion
 }

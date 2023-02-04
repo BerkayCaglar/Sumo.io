@@ -27,10 +27,6 @@ public class UIManager : MonoBehaviour
         // Get the animator component of the in game canvas.
         inGameCanvasAnimator = GetComponent<Animator>();
 
-        // Deactivate the pause menu and the count down parent. Because we don't need them at the start of the game.
-        pauseMenu.SetActive(false);
-        pauseButton.SetActive(false);
-
         // Set the GameState to Paused.
         GameManager.Instance.PauseGame();
 
@@ -208,6 +204,11 @@ public class UIManager : MonoBehaviour
 
         // Set the new count to the text.
         playersCountText.text = count.ToString();
+
+        if (count == 1)
+        {
+            PrepareRestart("You're The Winner!");
+        }
     }
 
     /// <summary>
@@ -235,7 +236,6 @@ public class UIManager : MonoBehaviour
     {
         // Play the remaining time animation.
         inGameCanvasAnimator.SetTrigger("Remaining Time");
-        Debug.Log("Remaining Time: " + remainingTime);
         // Set the remaining time to the text.
         remainingTimeText.text = remainingTime.ToString();
     }

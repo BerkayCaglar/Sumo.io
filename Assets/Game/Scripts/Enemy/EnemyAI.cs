@@ -40,8 +40,8 @@ public class EnemyAI : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, m_enemy.DetectionRadius, m_enemy.DetectableLayerMask);
         foreach (Collider collider in colliders)
         {
-            // If the collider is the enemy itself, continue
-            if (collider.gameObject == this.gameObject) continue;
+            // If the collider is the enemy itself or the dictionary already contains the distance, continue
+            if (collider.gameObject == this.gameObject || m_distanceAndTarget.ContainsKey(Vector3.Distance(transform.position, collider.transform.position))) continue;
 
             // Add the target to the dictionary
             m_distanceAndTarget.Add(Vector3.Distance(transform.position, collider.transform.position), collider.gameObject);

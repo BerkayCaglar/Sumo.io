@@ -20,7 +20,6 @@ public class EnemyCollisionController : MonoBehaviour
             PrepareForImpact();
             PerformImpact(collision);
         }
-
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -34,6 +33,9 @@ public class EnemyCollisionController : MonoBehaviour
         {
             // Decrease the players count in UI Manager
             GameManager.Instance.DecreasePlayersCountInUIManager();
+
+            // Adds the powers of the deceased to the powers of the Killing Person.
+            KilledBySomeone();
 
             // Destroy the enemy object
             Destroy(gameObject);
@@ -59,6 +61,9 @@ public class EnemyCollisionController : MonoBehaviour
     /// <param name="collision"></param>
     private void PerformImpact(Collision collision)
     {
+        // Set the last hit
+        m_enemy.LastHitToMe = collision.gameObject;
+
         // Get the direction of the collision and add force to the player object
         GameManager.Instance.CalculateTheDirectionOfHitAndPush(collision, gameObject, m_enemy: this.m_enemy);
 
@@ -89,6 +94,33 @@ public class EnemyCollisionController : MonoBehaviour
 
         // Destroy the boost object
         Destroy(other.gameObject);
+    }
+    /// <summary>
+    /// If the enemy object is killed by the player or enemy object, increase the push force, increase the scale and increase the mass of the player or enemy object.
+    /// </summary>
+    private void KilledBySomeone()
+    {
+        if (m_enemy.LastHitToMe != null)
+        {
+            if (m_enemy.LastHitToMe.CompareTag("Player"))
+            {
+                Player player = m_enemy.LastHitToMe.GetComponent<Player>();
+
+                // Increase the score of the player
+                player.PushForce += 4f;
+                player.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+                player.RigidBody.mass += 0.5f;
+            }
+            else if (m_enemy.LastHitToMe.CompareTag("Enemy"))
+            {
+                Enemy enemy = m_enemy.LastHitToMe.GetComponent<Enemy>();
+
+                // Increase the score of the enemy
+                enemy.PushForce += 4f;
+                enemy.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+                enemy.RigidBody.mass += 0.5f;
+            }
+        }
     }
 
     #endregion
