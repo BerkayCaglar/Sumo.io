@@ -4,15 +4,24 @@ No Surrender InternShip programı için Berkay Çağlar tarafından tasarlanmı�
 
 Aktif özellikler;
 
-Aktif Yapay zeka sistemi (NavMesh bazlı).
-Spawn Sistemi, 
+Aktif Yapay zeka sistemi (NavMesh bazlı),
+
+Spawn Sistemi,
+
 Vuruş ve vuruşa bağlı tepki sistemi,
+
 Hareket ve kontrol sistemi, 
+
 UI animasyonları ve kontrolü için UI Manager desteği,
+
 Kamera animasyonları,
+
 2 ayrı kontrol edilebilen karakter,
+
 Boost sistemi ile oyuncunun gücünü arttırma,
+
 Bir oyuncuyu elediğin zaman artan güç sistemi,
+
 Oyun sonu sıralama sistemi ve ödül sistemi (1. Olursanız altın, ilk 3'e girerseniz gümüş, bunların ikisine de giremezseniz bronz madalya)
 Oyun sonu restart sistemi,
 Pause seçeneği ile oyunu durdurup devam edebilme seçeneği,
