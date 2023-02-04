@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: 1436200277575357625}
   - component: {fileID: 33011111960698906}
   - component: {fileID: 417741835631907462}
+  - component: {fileID: -247664612328067123}
+  - component: {fileID: 9219279855632588607}
   m_Layer: 6
   m_Name: Beer Boost
   m_TagString: Boost
@@ -343,6 +345,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.101997636, y: 0.14297512, z: 0.14857171}
   m_Center: {x: 0.00036735812, y: 0.009049337, z: -0.01568882}
+--- !u!54 &-247664612328067123
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423853566471541484}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &9219279855632588607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423853566471541484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06, y: 0.14297509, z: 0.12}
+  m_Center: {x: 0.0003673578, y: 0.009049338, z: -0.015688816}
 --- !u!1 &423861073847884878
 GameObject:
   m_ObjectHideFlags: 0

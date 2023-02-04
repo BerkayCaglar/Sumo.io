@@ -15,8 +15,10 @@ public class UIManager : MonoBehaviour
     private int countDown = 3;
     private void Awake()
     {
+        // If there is no instance of this class, set it to this
         if (Instance == null)
         {
+            // Set the instance to this
             Instance = this;
         }
     }
@@ -75,7 +77,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void PrepareRestart(string gameOverTitle = null)
     {
-        // If the remaining time has elapsed, the title is changed.
+        // For a specific title, we change the title text.
         if (gameOverTitle != null)
         {
             gameOverTitleText.text = gameOverTitle;
@@ -96,6 +98,7 @@ public class UIManager : MonoBehaviour
         // Set the placement text and image.
         placementText.text = playersCountText.text;
 
+        // Set the placement award image.
         SetPlacementAwardImage();
     }
 
@@ -110,12 +113,15 @@ public class UIManager : MonoBehaviour
         // Set the placement award image.
         if (placement == 1)
         {
+            // Set the first place image.
             placementSprite.sprite = placementSprites[0];
         }
+        // If the player is among the top 3, he wins a silver medal.
         else if (placement <= 3)
         {
             placementSprite.sprite = placementSprites[1];
         }
+        // If two conditions are not met, the player wins any bronze medal.
         else
         {
             placementSprite.sprite = placementSprites[2];

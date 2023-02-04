@@ -34,18 +34,23 @@ public class PlayerController : MonoBehaviour
             // Limit the player's speed
             if (m_player.RigidBody.velocity.magnitude > m_player.MaxSpeed)
             {
+                // Normalize the velocity and multiply it by the max speed
                 m_player.RigidBody.velocity = m_player.RigidBody.velocity.normalized * m_player.MaxSpeed;
             }
         }
         else if (m_player.RigidBody.velocity.magnitude < m_player.StopDistance)
         {
+            // Set is on impact to false
             m_player.IsOnImpact = false;
         }
 
         // Rotate Player to the direction of the joystick
         if (m_player.FixedJoystick.Horizontal != 0 || m_player.FixedJoystick.Vertical != 0)
         {
+            // Rotate the player to the direction of the joystick
             Quaternion desiredRotation = Quaternion.LookRotation(new Vector3((-m_player.FixedJoystick.Horizontal), 0, (-m_player.FixedJoystick.Vertical)));
+
+            // Rotate the player
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, m_player.TurnSpeed * Time.fixedDeltaTime);
         }
     }

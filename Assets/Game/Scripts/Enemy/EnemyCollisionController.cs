@@ -100,10 +100,12 @@ public class EnemyCollisionController : MonoBehaviour
     /// </summary>
     private void KilledBySomeone()
     {
+        // If the last hit to me is not null, increase the push force, increase the scale and increase the mass of the player or enemy object.
         if (m_enemy.LastHitToMe != null)
         {
             if (m_enemy.LastHitToMe.CompareTag("Player"))
             {
+                // Get the player component
                 Player player = m_enemy.LastHitToMe.GetComponent<Player>();
 
                 // Increase the score of the player
@@ -113,6 +115,7 @@ public class EnemyCollisionController : MonoBehaviour
             }
             else if (m_enemy.LastHitToMe.CompareTag("Enemy"))
             {
+                // Get the enemy component
                 Enemy enemy = m_enemy.LastHitToMe.GetComponent<Enemy>();
 
                 // Increase the score of the enemy
