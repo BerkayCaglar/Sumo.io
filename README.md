@@ -1,6 +1,4 @@
 # Sumo.io
- 
-#### Bu oyun No Surrender InternShip programı için Berkay Çağlar tarafından tasarlanmıştır!
 
 #### Oyun içi video : https://www.youtube.com/watch?v=oNjqLZTTNjw
 
